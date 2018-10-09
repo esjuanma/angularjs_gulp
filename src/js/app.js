@@ -1,5 +1,5 @@
 const iUP = angular
-    .module('appName', ['ngMaterial', 'ngAnimate', 'ngMessages', 'ngAria', 'ui.router']);
+    .module('iUP', ['ngMaterial', 'ngAnimate', 'ngMessages', 'ngAria', 'ui.router']);
 
 ((app) => {
     
@@ -13,7 +13,10 @@ const iUP = angular
             controller: component
         });
 
-        const components = ['Home'];
+        const components = ['Home', 'About', 'Pozos', 'Last'];
         components.forEach(defineState);
     }]);
+
 })(iUP);
+
+console.log('Test')
