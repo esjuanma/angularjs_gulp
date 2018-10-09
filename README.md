@@ -1,1 +1,1 @@
-angularjs_gulp
+AngularJS + Gulp Base
