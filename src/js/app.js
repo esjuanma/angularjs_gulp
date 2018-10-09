@@ -8,12 +8,12 @@ const iUP = angular
         $urlRouterProvider.otherwise('/');
 
         const defineState = component => $stateProvider.state(component, {
-            url: '/' + component,
-            templateUrl: `components/${component}/template.html`,
-            controller: `components/${component}/controller`
+            url: '/' + component.toLowerCase(),
+            templateUrl: `components/${component.toLowerCase()}/template.html`,
+            controller: component
         });
 
-        const components = ['home'];
+        const components = ['Home'];
         components.forEach(defineState);
     }]);
 })(iUP);

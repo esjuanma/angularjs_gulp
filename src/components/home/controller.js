@@ -1,5 +1,3 @@
-((app) => {
-   
-    app.controller('Home', function() {
-
-})(iUP);
+iUP.controller('Home', function($scope) {
+    $scope.msg = 'Hola';
+});

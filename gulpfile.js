@@ -25,42 +25,48 @@ gulp.task('default', ['dev'], () => {
     gulp.watch(`${sourceFolder}/**/*.html`, ['html-watch']);
 });
 
-gulp.task('dev', ['modules', 'components', 'html', 'image', 'sass', 'js']);
+gulp.task('dev', ['modules', 'components-templates', 'html', 'image', 'sass', 'js']);
 
 gulp.task('modules',
-    () => gulp.src(`${sourceFolder}/modules/**`)
+    () => gulp
+        .src(`${sourceFolder}/modules/**`)
         .pipe(gulp.dest(`${devFolder}/modules`))
         .pipe(browserSync.stream())
 );
 
-gulp.task('components',
-    () => gulp.src(`${sourceFolder}/components/**`)
+gulp.task('components-templates', 
+    () => gulp
+        .src(`${sourceFolder}/components/**/*.html`)
         .pipe(gulp.dest(`${devFolder}/components`))
         .pipe(browserSync.stream())
 );
 
 gulp.task('html',
-    () => gulp.src(`${sourceFolder}/*.html`)
+    () => gulp
+        .src(`${sourceFolder}/*.html`)
         .pipe(gulp.dest(devFolder))
         .pipe(browserSync.stream())
 );
 
 gulp.task('image',
-    () => gulp.src(`${sourceFolder}/images/*`)
+    () => gulp
+        .src(`${sourceFolder}/images/*`)
         .pipe(gulp.dest(`${devFolder}/images`))
         .pipe(browserSync.stream())
 );
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass',
-    () => gulp.src(`${sourceFolder}/css/*.scss`)
+    () => gulp
+        .src(`${sourceFolder}/css/*.scss`)
         .pipe(sass())
         .pipe(gulp.dest(`${devFolder}/css`))
         .pipe(browserSync.stream())
 );
 
 gulp.task('js',
-    () => gulp.src(`${sourceFolder}/js/**/*.js`)
+    () => gulp
+        .src([`${sourceFolder}/js/**/*.js`, `${sourceFolder}/components/**/*.js`])
         .pipe(concat(`bundle.js`))
         .pipe(gulp.dest(`${devFolder}/js`))
         .pipe(browserSync.stream())
@@ -71,7 +77,7 @@ gulp.task('image-watch', ['image'], (done) => {
     done();
 });
 
-gulp.task('components-watch', ['components'], (done) => {
+gulp.task('components-watch', ['components-templates'], (done) => {
     browserSync.reload();
     done();
 });
