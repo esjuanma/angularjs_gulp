@@ -1,5 +1,5 @@
-(() => {
-    const msg = 'Hola'
-    console.log(msg);
+((app) => {
+   
+    app.controller('Home', function() {
 
-})();
+})(iUP);

@@ -25,7 +25,13 @@ gulp.task('default', ['dev'], () => {
     gulp.watch(`${sourceFolder}/**/*.html`, ['html-watch']);
 });
 
-gulp.task('dev', ['components', 'html', 'image', 'sass', 'js']);
+gulp.task('dev', ['modules', 'components', 'html', 'image', 'sass', 'js']);
+
+gulp.task('modules',
+    () => gulp.src(`${sourceFolder}/modules/**`)
+        .pipe(gulp.dest(`${devFolder}/modules`))
+        .pipe(browserSync.stream())
+);
 
 gulp.task('components',
     () => gulp.src(`${sourceFolder}/components/**`)
@@ -57,6 +63,7 @@ gulp.task('js',
     () => gulp.src(`${sourceFolder}/js/**/*.js`)
         .pipe(concat(`bundle.js`))
         .pipe(gulp.dest(`${devFolder}/js`))
+        .pipe(browserSync.stream())
 );
 
 gulp.task('image-watch', ['image'], (done) => {

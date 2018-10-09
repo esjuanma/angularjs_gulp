@@ -13,7 +13,7 @@ const iUP = angular
             controller: `components/${component}/controller`
         });
 
-        const components = ['home', 'contact', 'about', 'grilla'];
+        const components = ['home'];
         components.forEach(defineState);
     }]);
 })(iUP);
